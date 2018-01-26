@@ -9,9 +9,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "SnapX\\": [
-                "src",
-            ]
+            "SnapX\\": "src\\"
         }
     },
     "require": {
