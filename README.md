@@ -1,4 +1,4 @@
-# snap-wkhtmltopdf-multi
+# SnapX
 
 This package installs all variants of wkhtmltopdf to support multi platform pdf 
 creation. It combines these packages:
