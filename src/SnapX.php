@@ -28,7 +28,23 @@ class SnapX
         }
         
         if (self::commandExists('wkhtmltopdf')) {
-            self::$pdfBinary = 'wkhtmltopdf';
+            $osVersion = php_uname('v');
+            if (stristr($osVersion, 'ubuntu') !== false || stristr($osVersion, 'debian') === false) {
+                // wkhtmltopdf cannot run headless on debian/ubuntu, work around this
+                self::$pdfBinary = __DIR__ . '/wkhtmltopdf.sh';
+                
+                if (false === self::commandExists('xvfb-run')) {
+                    throw new \Exception('To use the OS wkhtmltopdf version, you must install xvfb on Debian an Ubuntu');
+                }
+                
+                if (false === is_executable(self::$pdfBinary)) {
+                    throw new \Exception('The binary is not executable at: ' . self::$pdfBinary);
+                }
+                
+            } else {
+                self::$pdfBinary = 'wkhtmltopdf';
+            }
+            
             return self::$pdfBinary;
         } elseif (PHP_OS === 'WINNT') {
             // We are on Windows, use wemersonjanuario's package

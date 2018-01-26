@@ -1,0 +1,1 @@
+xvfb-run -a -s "-screen 0 800x600x16" wkhtmltopdf "$@"
