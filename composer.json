@@ -1,0 +1,23 @@
+{
+    "name": "tioga-tours/snap-wkhtmltopdf-multi",
+    "authors": [
+        {
+            "name": "Martin Winkel",
+            "email": "martin@tiogatours.nl",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SnapX\\": [
+                "src",
+            ]
+        }
+    },
+    "require": {
+        "h4cc/wkhtmltopdf-amd64": "~0.12.3",
+        "h4cc/wkhtmltopdf-i386": "^0.12.4",
+        "knplabs/knp-snappy": "~0.4.3",
+        "wemersonjanuario/wkhtmltopdf-windows": "0.12.2.3"
+    }
+}
