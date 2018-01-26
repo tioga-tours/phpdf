@@ -8,7 +8,16 @@ class SnapX
 {
     protected static $pdfBinary;
     
-    public static function createSnappy(array $options = array(), array $env = null): \Knp\Snappy\Pdf
+    /**
+     * Get a new Snappy PDF creator
+     *
+     * @param array $options
+     * @param array|null $env
+     *
+     * @return \Knp\Snappy\Pdf
+     * @throws \Exception
+     */
+    public static function createPdf(array $options = array(), array $env = null): \Knp\Snappy\Pdf
     {
         return new Pdf(self::getPdfBinary(), $options, $env);
     }
@@ -50,7 +59,7 @@ class SnapX
             // We are on Windows, use wemersonjanuario's package
             $binary = $vendorPath . 'wemersonjanuario/wkhtmltopdf-windows/bin/';
             $binary .= strstr(php_uname('m'), '64') !== false ? '64bit' : '32bit';
-            $binary .= 'wkhmtltopdf.exe';
+            $binary .= '/wkhtmltopdf.exe';
         } else {
             // We are on Linux/Unix/Mac, use h4cc's package
             $suffix = strstr(php_uname('m'), '64') !== false ? 'amd64' : 'i386';
@@ -63,6 +72,7 @@ class SnapX
         }
         
         self::$pdfBinary = $binary;
+        return self::$pdfBinary;
     }
     
     /**
