@@ -23,7 +23,7 @@ class WkhtmlToPdf
      *
      * @var bool|array
      */
-    protected $tocOptions = [];
+    protected $tocOptions = false;
 
     protected $cleanupFiles = [];
 
@@ -338,8 +338,15 @@ HTML;
                     $values = [$values];
                 }
                 foreach ($values as $value) {
+                    if ($value === false) {
+                        continue;
+                    }
                     $cmd[] = '--' . $option;
-                    $cmd[] = self::processOptionValue($option, $value, $this->tocOptions, 'toc');
+    
+                    $value = self::processOptionValue($option, $value, $this->options, 'toc');
+                    if ($value !== null && $value !== true) {
+                        $cmd[] = $value;
+                    }
                 }
             }
         }
@@ -440,10 +447,6 @@ HTML;
 
     protected static function processOptionValue(string $option, $value, array $allOptions, ?string $context = null)
     {
-        if (false === array_key_exists('args', self::ACCEPTED_OPTIONS[$option])) {
-            return null;
-        }
-
         switch ($option) {
             case 'header-html':
             case 'footer-html':
@@ -459,6 +462,13 @@ HTML;
                     $html = $value;
                     $value = tempnam(self::getTempDir(), 'pdfheader') . '.html';
                     file_put_contents($value, $html);
+                }
+                break;
+            case 'xsl-style-sheet':
+                if (false === file_exists($value)) {
+                    $xsl = $value;
+                    $value = tempnam(self::getTempDir(), 'xsl') . '.xsl';
+                    file_put_contents($value, $xsl);
                 }
                 break;
         }
