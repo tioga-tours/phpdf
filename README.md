@@ -1,8 +1,13 @@
 # PhPdf
 
 For now it is a thin wrapper around wkhtmltopdf, like Knplabs\snappy. By default
-it includes all wkhtmltopdf dependencies for al platforms. It knows which options 
-are valid and sets them in an early stage.
+it includes all wkhtmltopdf dependencies for all platforms. It knows which options 
+are valid and validates them directly, so debuggin is easier.
+
+Also I did some research about the header and footer html properties. Those were
+quite buggy with wkhtmltopdf. Plain html tags that are passed in, are
+wrapped inside some styled html document. NOTE: some styles may still mess
+up your header and footer.
 
 It also supports async generation of PDF files.
 
