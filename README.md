@@ -27,7 +27,7 @@ $pdf->addHtml('<html><head></head><body><h1>Content</h1></body></html>');
 $pdf->addUrl('https://github.com');
 $pdf->generate('/home/user/mydoc.pdf');
 
-// Or async
+// Or async and create temporary file
 $pdf->generate(null, true);
 // do other stuff
 
