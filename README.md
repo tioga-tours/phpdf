@@ -1,11 +1,7 @@
-# SnapX
+# PhPdf
 
-This package installs all variants of wkhtmltopdf to support multi platform pdf 
-creation. It combines these packages:
+For now it is a thin wrapper around wkhtmltopdf, like Knplabs\snappy. By default
+it includes all wkhtmltopdf dependencies for al platforms. It knows which options 
+are valid and sets them in an early stage.
 
-- h4cc/wkhtmltopdf-amd64
-- h4cc/wkhtmltopdf-i386
-- wemersonjanuario/wkhtmltopdf-windows
-- knplabs/knp-snappy
-
-Also it detects if it is installed on the operating system. It will prefer to use that.
+It also supports async generation of PDF files.
