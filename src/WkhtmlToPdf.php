@@ -288,7 +288,7 @@ HTML;
 
     public function getErrorOutput()
     {
-        return $this->process->getErrorOutput();
+        return $this->process->getOutput() . PHP_EOL . $this->process->getErrorOutput();
     }
 
     /**
@@ -541,7 +541,7 @@ HTML;
             $vendorPath = __DIR__ . '/../vendor/';
         }
 
-        if (Shell::commandExists('wkhtmltopdf')) {
+        /*if (Shell::commandExists('wkhtmltopdf')) {
             $osVersion = php_uname('v');
             if (stristr($osVersion, 'ubuntu') !== false || stristr($osVersion, 'debian') === false) {
                 // wkhtmltopdf cannot run headless on debian/ubuntu, work around this
@@ -560,7 +560,7 @@ HTML;
             }
 
             return self::$binary;
-        } elseif (PHP_OS === 'WINNT') {
+        } else*/if (PHP_OS === 'WINNT') {
             // We are on Windows, use wemersonjanuario's package
             $binary = $vendorPath . 'wemersonjanuario/wkhtmltopdf-windows/bin/';
             $binary .= strstr(php_uname('m'), '64') !== false ? '64bit' : '32bit';
@@ -569,7 +569,7 @@ HTML;
             // We are on Linux/Unix/Mac, use h4cc's package
             $suffix = strstr(php_uname('m'), '64') !== false ? 'amd64' : 'i386';
             $binary = $vendorPath . 'h4cc/wkhtmltopdf-' . $suffix;
-            $binary .= '/bin/wkhtmltopdf' . $suffix;
+            $binary .= '/bin/wkhtmltopdf-' . $suffix;
         }
 
         if (false === file_exists($binary)) {
