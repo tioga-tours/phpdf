@@ -2,7 +2,6 @@
 
 namespace PhPdf;
 
-
 use Symfony\Component\Process\Process;
 
 class WkhtmlToPdf
@@ -72,31 +71,65 @@ HTML;
         // Global Options:
         'collate' => ['description' => 'Collate when printing multiple copies (default)'],
         'no-collate' => ['description' => 'Do not collate when printing multiple copies'],
-        'cookie-jar' => ['args' => ['<path>'], 'description' => ' Read and write cookies from and to the supplied cookie jar file'],
-        'copies' => ['args' => ['<number>'], 'description' => ' Number of copies to print into the pdf file ', 'default' => '1'],
-        'dpi' => ['args' => ['<dpi>'], 'description' => ' Change the dpi explicitly (this has no effect on X11 based systems) ', 'default' => '96'],
+        'cookie-jar' => [
+            'args' => ['<path>'],
+            'description' => ' Read and write cookies from and to the supplied cookie jar file',
+        ],
+        'copies' => [
+            'args' => ['<number>'],
+            'description' => ' Number of copies to print into the pdf file ',
+            'default' => '1',
+        ],
+        'dpi' => [
+            'args' => ['<dpi>'],
+            'description' => ' Change the dpi explicitly (this has no effect on X11 based systems) ',
+            'default' => '96',
+        ],
         'extended-help' => ['description' => 'Display more extensive help, detailing less common command switches'],
         'grayscale' => ['description' => 'PDF will be generated in grayscale'],
         'help' => ['description' => 'Display help'],
         'htmldoc' => ['description' => 'Output program html help'],
-        'image-dpi' => ['args' => ['<integer>'], 'description' => ' When embedding images scale them down to this dpi ', 'default' => '600'],
-        'image-quality' => ['args' => ['<integer>'], 'description' => ' When jpeg compressing images use this quality ', 'default' => '94'],
+        'image-dpi' => [
+            'args' => ['<integer>'],
+            'description' => ' When embedding images scale them down to this dpi ',
+            'default' => '600',
+        ],
+        'image-quality' => [
+            'args' => ['<integer>'],
+            'description' => ' When jpeg compressing images use this quality ',
+            'default' => '94',
+        ],
         'license' => ['description' => 'Output license information and exit'],
         'lowquality' => ['description' => 'Generates lower quality pdf/ps. Useful to shrink the result document space'],
         'manpage' => ['description' => 'Output program man page'],
         'margin-bottom' => ['args' => ['<unitreal>'], 'description' => ' Set the page bottom margin'],
         'margin-left' => ['args' => ['<unitreal>'], 'description' => ' Set the page left margin ', 'default' => '10mm'],
-        'margin-right' => ['args' => ['<unitreal>'], 'description' => ' Set the page right margin ', 'default' => '10mm'],
+        'margin-right' => [
+            'args' => ['<unitreal>'],
+            'description' => ' Set the page right margin ',
+            'default' => '10mm',
+        ],
         'margin-top' => ['args' => ['<unitreal>'], 'description' => ' Set the page top margin'],
-        'orientation' => ['args' => ['<orientation>'], 'description' => ' Set orientation to Landscape or Portrait ', 'default' => 'Portrait'],
+        'orientation' => [
+            'args' => ['<orientation>'],
+            'description' => ' Set orientation to Landscape or Portrait ',
+            'default' => 'Portrait',
+        ],
         'page-height' => ['args' => ['<unitreal>'], 'description' => ' Page height'],
-        'page-size' => ['args' => ['<Size>'], 'description' => ' Set paper size to: A4, Letter, etc. ', 'default' => 'A4'],
+        'page-size' => [
+            'args' => ['<Size>'],
+            'description' => ' Set paper size to: A4, Letter, etc. ',
+            'default' => 'A4',
+        ],
         'page-width' => ['args' => ['<unitreal>'], 'description' => ' Page width'],
         'no-pdf-compression' => ['description' => 'Do not use lossless compression on pdf objects'],
         'quiet' => ['description' => 'Be less verbose'],
         'read-args-from-stdin' => ['description' => 'Read command line arguments from stdin'],
         'readme' => ['description' => 'Output program readme'],
-        'title' => ['args' => ['<text>'], 'description' => ' The title of the generated pdf file (The title of the first document is used if not specified)'],
+        'title' => [
+            'args' => ['<text>'],
+            'description' => ' The title of the generated pdf file (The title of the first document is used if not specified)',
+        ],
         'use-xserver' => ['description' => 'Use the X server (some plugins and other stuff might not work without X11)'],
         'version' => ['description' => 'Output version information and exit'],
 
@@ -108,15 +141,32 @@ HTML;
         'outline-depth' => ['args' => ['<level>'], 'description' => ' Set the depth of the outline ', 'default' => '4'],
 
         //Page Options:
-        'allow' => ['args' => ['<path>'], 'description' => ' Allow the file or files from the specified folder to be loaded', 'repeatable' => true],
+        'allow' => [
+            'args' => ['<path>'],
+            'description' => ' Allow the file or files from the specified folder to be loaded',
+            'repeatable' => true,
+        ],
         'background' => ['description' => 'Do print background (default)'],
         'no-background' => ['description' => 'Do not print background'],
         'bypass-proxy-for' => ['args' => ['<value>'], 'description' => ' Bypass proxy for host', 'repeatable' => true],
         'cache-dir' => ['args' => ['<path>'], 'description' => ' Web cache directory'],
-        'checkbox-checked-svg' => ['args' => ['<path>'], 'description' => ' Use this SVG file when rendering checked checkboxes'],
-        'checkbox-svg' => ['args' => ['<path>'], 'description' => ' Use this SVG file when rendering unchecked checkboxes'],
-        'cookie' => ['args' => ['<name>', '<value>'], 'description' => ' Set an additional cookie (repeatable), value should be url encoded.'],
-        'custom-header' => ['args' => ['<name>', '<value>'], 'description' => ' Set an additional HTTP header', 'repeatable' => true],
+        'checkbox-checked-svg' => [
+            'args' => ['<path>'],
+            'description' => ' Use this SVG file when rendering checked checkboxes',
+        ],
+        'checkbox-svg' => [
+            'args' => ['<path>'],
+            'description' => ' Use this SVG file when rendering unchecked checkboxes',
+        ],
+        'cookie' => [
+            'args' => ['<name>', '<value>'],
+            'description' => ' Set an additional cookie (repeatable), value should be url encoded.',
+        ],
+        'custom-header' => [
+            'args' => ['<name>', '<value>'],
+            'description' => ' Set an additional HTTP header',
+            'repeatable' => true,
+        ],
         'custom-header-propagation' => ['description' => 'Add HTTP headers specified by --custom-header for each resource request.'],
         'no-custom-header-propagation' => ['description' => 'Do not add HTTP headers specified by --custom-header for each resource request.'],
         'debug-javascript' => ['description' => 'Show javascript debugging output'],
@@ -133,10 +183,22 @@ HTML;
         'enable-internal-links' => ['description' => 'Make local links (default)'],
         'disable-javascript' => ['description' => 'Do not allow web pages to run javascript'],
         'enable-javascript' => ['description' => 'Do allow web pages to run javascript (default)'],
-        'javascript-delay' => ['args' => ['<msec>'], 'description' => ' Wait some milliseconds for javascript finish ', 'default' => '200'],
+        'javascript-delay' => [
+            'args' => ['<msec>'],
+            'description' => ' Wait some milliseconds for javascript finish ',
+            'default' => '200',
+        ],
         'keep-relative-links' => ['description' => 'Keep relative external links as relative external links'],
-        'load-error-handling' => ['args' => ['<handler>'], 'description' => ' Specify how to handle pages that fail to load: abort, ignore or skip ', 'default' => 'abort'],
-        'load-media-error-handling' => ['args' => ['<handler>'], 'description' => ' Specify how to handle media files that fail to load: abort, ignore or skip ', 'default' => 'ignore'],
+        'load-error-handling' => [
+            'args' => ['<handler>'],
+            'description' => ' Specify how to handle pages that fail to load: abort, ignore or skip ',
+            'default' => 'abort',
+        ],
+        'load-media-error-handling' => [
+            'args' => ['<handler>'],
+            'description' => ' Specify how to handle media files that fail to load: abort, ignore or skip ',
+            'default' => 'ignore',
+        ],
         'disable-local-file-access' => ['description' => 'Do not allowed conversion of a local file to read in other local files, unless explicitly allowed with --allow'],
         'enable-local-file-access' => ['description' => 'Allowed conversion of a local file to read in other local files. (default)'],
         'minimum-font-size' => ['args' => ['<int>'], 'description' => ' Minimum font size'],
@@ -146,25 +208,52 @@ HTML;
         'password' => ['args' => ['<password>'], 'description' => ' HTTP Authentication password'],
         'disable-plugins' => ['description' => 'Disable installed plugins (default)'],
         'enable-plugins' => ['description' => 'Enable installed plugins (plugins will likely not work)'],
-        'post' => ['args' => ['<name>', '<value>'], 'description' => ' Add an additional post field', 'repeatable' => true],
-        'post-file' => ['args' => ['<name>', '<path>'], 'description' => ' Post an additional file', 'repeatable' => true],
+        'post' => [
+            'args' => ['<name>', '<value>'],
+            'description' => ' Add an additional post field',
+            'repeatable' => true,
+        ],
+        'post-file' => [
+            'args' => ['<name>', '<path>'],
+            'description' => ' Post an additional file',
+            'repeatable' => true,
+        ],
         'print-media-type' => ['description' => 'Use print media-type instead of screen'],
         'no-print-media-type' => ['description' => 'Do not use print media-type instead of screen (default)'],
         'proxy' => ['args' => ['<proxy>'], 'description' => ' Use a proxy'],
-        'radiobutton-checked-svg' => ['args' => ['<path>'], 'description' => ' Use this SVG file when rendering checked radiobuttons'],
-        'radiobutton-svg' => ['args' => ['<path>'], 'description' => ' Use this SVG file when rendering unchecked radiobuttons'],
+        'radiobutton-checked-svg' => [
+            'args' => ['<path>'],
+            'description' => ' Use this SVG file when rendering checked radiobuttons',
+        ],
+        'radiobutton-svg' => [
+            'args' => ['<path>'],
+            'description' => ' Use this SVG file when rendering unchecked radiobuttons',
+        ],
         'resolve-relative-links' => ['description' => 'Resolve relative external links into absolute links (default)'],
-        'run-script' => ['args' => ['<js>'], 'description' => ' Run this additional javascript after the page is done loading', 'repeatable' => true],
+        'run-script' => [
+            'args' => ['<js>'],
+            'description' => ' Run this additional javascript after the page is done loading',
+            'repeatable' => true,
+        ],
         'disable-smart-shrinking' => ['description' => 'Disable the intelligent shrinking strategy used by WebKit that makes the pixel/dpi ratio none constant'],
         'enable-smart-shrinking' => ['description' => 'Enable the intelligent shrinking strategy used by WebKit that makes the pixel/dpi ratio none constant (default)'],
         'stop-slow-scripts' => ['description' => 'Stop slow running javascripts (default)'],
         'no-stop-slow-scripts' => ['description' => 'Do not Stop slow running javascripts'],
         'disable-toc-back-links' => ['description' => 'Do not link from section header to toc (default)'],
         'enable-toc-back-links' => ['description' => 'Link from section header to toc'],
-        'user-style-sheet' => ['args' => ['<url>'], 'description' => ' Specify a user style sheet, to load with every page'],
+        'user-style-sheet' => [
+            'args' => ['<url>'],
+            'description' => ' Specify a user style sheet, to load with every page',
+        ],
         'username' => ['args' => ['<username>'], 'description' => ' HTTP Authentication username'],
-        'viewport-size' => ['args' => ['<>'], 'description' => ' Set viewport size if you have custom scrollbars or css attribute overflow to emulate window size'],
-        'window-status' => ['args' => ['<windowStatus>'], 'description' => ' Wait until window.status is equal to this string before rendering page'],
+        'viewport-size' => [
+            'args' => ['<>'],
+            'description' => ' Set viewport size if you have custom scrollbars or css attribute overflow to emulate window size',
+        ],
+        'window-status' => [
+            'args' => ['<windowStatus>'],
+            'description' => ' Wait until window.status is equal to this string before rendering page',
+        ],
         'zoom' => ['args' => ['<float>'], 'description' => ' Use this zoom factor ', 'default' => '1'],
 
         //Headers And Footer Options:
@@ -176,7 +265,11 @@ HTML;
         'footer-line' => ['description' => 'Display line above the footer'],
         'no-footer-line' => ['description' => 'Do not display line above the footer (default)'],
         'footer-right' => ['args' => ['<text>'], 'description' => ' Right aligned footer text'],
-        'footer-spacing' => ['args' => ['<real>'], 'description' => ' Spacing between footer and content in mm ', 'default' => '0'],
+        'footer-spacing' => [
+            'args' => ['<real>'],
+            'description' => ' Spacing between footer and content in mm ',
+            'default' => '0',
+        ],
         'header-center' => ['args' => ['<text>'], 'description' => ' Centered header text'],
         'header-font-name' => ['args' => ['<name>'], 'description' => ' Set header font name ', 'default' => 'Arial'],
         'header-font-size' => ['args' => ['<size>'], 'description' => ' Set header font size ', 'default' => '12'],
@@ -185,23 +278,48 @@ HTML;
         'header-line' => ['description' => 'Display line below the header'],
         'no-header-line' => ['description' => 'Do not display line below the header (default)'],
         'header-right' => ['args' => ['<text>'], 'description' => ' Right aligned header text'],
-        'header-spacing' => ['args' => ['<real>'], 'description' => ' Spacing between header and content in mm ', 'default' => '0'],
-        'replace' => ['args' => ['<name>', '<value>'], 'description' => ' Replace [name] with value in header and footer', 'repeatable' => true],
+        'header-spacing' => [
+            'args' => ['<real>'],
+            'description' => ' Spacing between header and content in mm ',
+            'default' => '0',
+        ],
+        'replace' => [
+            'args' => ['<name>', '<value>'],
+            'description' => ' Replace [name] with value in header and footer',
+            'repeatable' => true,
+        ],
     ];
 
     const ACCEPTED_TOC_OPTIONS = [
         //TOC Options:
         'disable-dotted-lines' => ['description' => 'Do not use dotted lines in the toc'],
-        'toc-header-text' => ['args' => ['<text>'], 'description' => ' The header text of the toc ', 'default' => 'Table of Contents'],
-        'toc-level-indentation' => ['args' => ['< width>'], 'description' => ' For each level of headings in the toc indent by this length ', 'default' => '1em'],
+        'toc-header-text' => [
+            'args' => ['<text>'],
+            'description' => ' The header text of the toc ',
+            'default' => 'Table of Contents',
+        ],
+        'toc-level-indentation' => [
+            'args' => ['< width>'],
+            'description' => ' For each level of headings in the toc indent by this length ',
+            'default' => '1em',
+        ],
         'disable-toc-links' => ['description' => 'Do not link from toc to sections'],
-        'toc-text-size-shrink' => ['args' => ['<real>'], 'description' => ' For each level of headings in the toc the font is scaled by this factor ', 'default' => '0.8'],
-        'xsl-style-sheet' => ['args' => ['<file>'], 'description' => ' Use the supplied xsl style sheet for printing the table of content'],
+        'toc-text-size-shrink' => [
+            'args' => ['<real>'],
+            'description' => ' For each level of headings in the toc the font is scaled by this factor ',
+            'default' => '0.8',
+        ],
+        'xsl-style-sheet' => [
+            'args' => ['<file>'],
+            'description' => ' Use the supplied xsl style sheet for printing the table of content',
+        ],
     ];
 
     /**
      * WkhtmlToPdf constructor.
+     *
      * @param array $options
+     *
      * @throws \Exception
      */
     public function __construct(array $options = [])
@@ -211,6 +329,7 @@ HTML;
 
     /**
      * @param string|string[] $html
+     *
      * @return WkhtmlToPdf
      */
     public function addHtml($html): WkhtmlToPdf
@@ -228,11 +347,13 @@ HTML;
         }
 
         $this->contents = array_merge($this->contents, $files);
+
         return $this;
     }
 
     /**
      * @param string|string[] $urls
+     *
      * @return $this
      */
     public function addUrl($urls)
@@ -248,7 +369,8 @@ HTML;
 
     /**
      * @param null|string $outputFile
-     * @param bool $async
+     * @param bool        $async
+     *
      * @return false|WkhtmlToPdf|string
      * @throws \Exception
      */
@@ -264,11 +386,21 @@ HTML;
         }
         $this->outputFile = $outputFile;
 
-        $this->executeCommand();
+        try {
+            $this->executeCommand();
 
-        if ($async === false) {
-            return $this->wait();
+            if ($async === false) {
+                return $this->wait();
+            }
+        } catch (\Symfony\Component\Process\Exception\ProcessSignaledException $e) {
+            echo '<pre>';
+            echo htmlentities(print_r($this->contents, true));
+            echo htmlentities($this->process->getErrorOutput());
+            echo htmlentities($this->process->getOutput());
+
+            die();
         }
+
         return $this;
     }
 
@@ -281,8 +413,10 @@ HTML;
 
         if (false === $this->process->isSuccessful()) {
             $this->cleanupFiles[] = $this->outputFile;
+
             return false;
         }
+
         return $this->outputFile;
     }
 
@@ -302,7 +436,9 @@ HTML;
         }
 
         $pdfGenerator = new self(['dump-default-toc-xsl' => true]);
-        $pdfGenerator->addHtml('<html><head></head><body><h1>Head</h1><h2>Head 2</h2><h3>Head 4</h3><h4>Head 4</h4><h5>Head 5</h5><h6>Head 6</h6></body></html>');
+        $pdfGenerator->addHtml(
+            '<html><head></head><body><h1>Head</h1><h2>Head 2</h2><h3>Head 4</h3><h4>Head 4</h4><h5>Head 5</h5><h6>Head 6</h6></body></html>'
+        );
         $pdfGenerator->generate();
 
         self::$tocXsl = $pdfGenerator->process->getOutput();
@@ -342,7 +478,7 @@ HTML;
                         continue;
                     }
                     $cmd[] = '--' . $option;
-    
+
                     $value = self::processOptionValue($option, $value, $this->options, 'toc');
                     if ($value !== null && $value !== true) {
                         $cmd[] = $value;
@@ -381,6 +517,7 @@ HTML;
      * @see https://wkhtmltopdf.org/usage/wkhtmltopdf.txt
      *
      * @param array $options
+     *
      * @return WkhtmlToPdf
      * @throws \Exception
      */
@@ -389,12 +526,14 @@ HTML;
         foreach ($options as $option => $value) {
             $this->setOption($option, $value);
         }
+
         return $this;
     }
 
     /**
      * @param string $option
      * @param string $value
+     *
      * @return WkhtmlToPdf
      * @throws \Exception
      */
@@ -402,6 +541,7 @@ HTML;
     {
         self::validateOption($option, $value);
         $this->options[$option] = $value;
+
         return $this;
     }
 
@@ -411,6 +551,7 @@ HTML;
      * @see https://wkhtmltopdf.org/usage/wkhtmltopdf.txt
      *
      * @param array $options
+     *
      * @return WkhtmlToPdf
      * @throws \Exception
      */
@@ -419,12 +560,14 @@ HTML;
         foreach ($options as $option => $value) {
             $this->setTocOption($option, $value);
         }
+
         return $this;
     }
 
     /**
      * @param string $option
      * @param string $value
+     *
      * @return WkhtmlToPdf
      * @throws \Exception
      */
@@ -433,6 +576,7 @@ HTML;
         self::validateOption($option, $value, 'toc');
         $this->enableToc();
         $this->tocOptions[$option] = $value;
+
         return $this;
     }
 
@@ -454,10 +598,12 @@ HTML;
                     if (false === stristr($value, '<body')) {
                         $value = str_replace(
                             ['{{content}}', '{{height}}'],
-                            [$value, $option === 'header-html' ? $allOptions['margin-top'] : $allOptions['margin-bottom'] ],
+                            [
+                                $value,
+                                $option === 'header-html' ? $allOptions['margin-top'] : $allOptions['margin-bottom'],
+                            ],
                             self::$headerFooterHtml
                         );
-
                     }
                     $html = $value;
                     $value = tempnam(self::getTempDir(), 'pdfheader') . '.html';
@@ -472,6 +618,7 @@ HTML;
                 }
                 break;
         }
+
         return $value;
     }
 
@@ -479,6 +626,7 @@ HTML;
      * @param string $option
      * @param string $value
      * @param null|string $context
+     *
      * @throws \Exception
      */
     protected function validateOption(string $option, string $value, ?string $context = null)
@@ -504,6 +652,7 @@ HTML;
         if (self::$tempDir === null) {
             self::$tempDir = sys_get_temp_dir();
         }
+
         return self::$tempDir;
     }
 
@@ -524,6 +673,7 @@ HTML;
 
     /**
      * Detect the correct binary, if already set or detected, it will return this binary
+     *
      * @return string
      * @throws \Exception
      */
@@ -560,7 +710,8 @@ HTML;
             }
 
             return self::$binary;
-        } else*/if (PHP_OS === 'WINNT') {
+        } else*/
+        if (PHP_OS === 'WINNT') {
             // We are on Windows, use wemersonjanuario's package
             $binary = $vendorPath . 'wemersonjanuario/wkhtmltopdf-windows/bin/';
             $binary .= strstr(php_uname('m'), '64') !== false ? '64bit' : '32bit';
@@ -577,6 +728,7 @@ HTML;
         }
 
         self::$binary = $binary;
+
         return self::$binary;
     }
 }
