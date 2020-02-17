@@ -615,6 +615,9 @@ HTML;
                     $xsl = $value;
                     $value = tempnam(self::getTempDir(), 'xsl') . '.xsl';
                     file_put_contents($value, $xsl);
+                } else {
+                    $value = escapeshellarg($value);
+                    print_r($value);die();
                 }
                 break;
         }
