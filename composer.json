@@ -19,9 +19,9 @@
         }
     ],
     "require": {
-        "zxp86021/wkhtmltopdf-amd64": "~0.12.5",
-        "h4cc/wkhtmltopdf-i386": "~0.12.4",
-        "lifewatch/wkhtmltopdf-windows": "~0.12.5",
+        "h4cc/wkhtmltopdf-amd64": "0.12.4",
+        "h4cc/wkhtmltopdf-i386": "0.12.4",
+        "lifewatch/wkhtmltopdf-windows": "0.12.4.0",
         "symfony/process": "~5.0"
     },
     "require-dev": {

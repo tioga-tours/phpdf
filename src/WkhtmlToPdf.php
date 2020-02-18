@@ -490,6 +490,7 @@ HTML;
         $cmd = array_merge($cmd, $this->contents, [$this->outputFile]);
 
         $this->process = new Process($cmd);
+        $this->process->setTimeout(100);
         $this->process->start();
     }
 
@@ -501,7 +502,7 @@ HTML;
     protected function cleanUp()
     {
         foreach ($this->cleanupFiles as $deleteFile) {
-            @unlink($deleteFile);
+            //@unlink($deleteFile);
         }
         $this->cleanupFiles = [];
     }
@@ -691,36 +692,12 @@ HTML;
             $vendorPath = __DIR__ . '/../vendor/';
         }
 
-        /*if (Shell::commandExists('wkhtmltopdf')) {
-            $osVersion = php_uname('v');
-            if (stristr($osVersion, 'ubuntu') !== false || stristr($osVersion, 'debian') === false) {
-                // wkhtmltopdf cannot run headless on debian/ubuntu, work around this
-                self::$binary = __DIR__ . '/wkhtmltopdf.sh';
-
-                if (false === Shell::commandExists('xvfb-run')) {
-                    throw new \Exception('To use the OS wkhtmltopdf version, you must install xvfb on Debian an Ubuntu');
-                }
-
-                if (false === is_executable(self::$binary)) {
-                    throw new \Exception('The binary is not executable at: ' . self::$binary);
-                }
-
-            } else {
-                self::$binary = 'wkhtmltopdf';
-            }
-
-            return self::$binary;
-        } else*/
+        $binary = $vendorPath . 'bin/';
         if (PHP_OS === 'WINNT') {
-            // We are on Windows, use wemersonjanuario's package
-            $binary = $vendorPath . 'wemersonjanuario/wkhtmltopdf-windows/bin/';
-            $binary .= strstr(php_uname('m'), '64') !== false ? '64bit' : '32bit';
-            $binary .= '/wkhtmltopdf.exe';
+            $binary .= strstr(php_uname('m'), '64') !== false ? 'wkhtmltopdf64.exe.bat' : 'wkhtmltopdf32.exe.bat';
         } else {
-            // We are on Linux/Unix/Mac, use h4cc's package
             $suffix = strstr(php_uname('m'), '64') !== false ? 'amd64' : 'i386';
-            $binary = $vendorPath . 'h4cc/wkhtmltopdf-' . $suffix;
-            $binary .= '/bin/wkhtmltopdf-' . $suffix;
+            $binary .= 'wkhtmltopdf-' . $suffix;
         }
 
         if (false === file_exists($binary)) {
